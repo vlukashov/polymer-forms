@@ -9,17 +9,6 @@
     <style include="polymer-forms-app-styles"></style>
 
     <section class="wrapper">
-      <iron-form allow-redirect class="form">
-        <form id="wrapped-form" action="index" method="GET">
-          <h2>iron-form with paper-inputs</h2>
-          <paper-input name="username" type="text" autocomplete="username" required
-              label="Username or email"></paper-input>
-  				<paper-input name="password" type="password" autocomplete="current-password" required
-  						label="Password"></paper-input>
-          <input type="submit">
-        </form>
-      </iron-form>
-
       <form id="native-form" action="index" method="GET" class="form">
         <h2>native form with native inputs</h2>
         <label>
@@ -34,6 +23,17 @@
         </label>
         <input type="submit">
       </form>
+
+      <iron-form allow-redirect class="form">
+        <form id="wrapped-form" action="index" method="GET">
+          <h2>iron-form with paper-inputs</h2>
+          <paper-input name="username" type="text" autocomplete="username" required
+              label="Username or email"></paper-input>
+          <paper-input name="password" type="password" autocomplete="current-password" required
+              label="Password"></paper-input>
+          <input type="submit">
+        </form>
+      </iron-form>
 
       <footer>
         <h2>Browser info</h2>
