@@ -1,0 +1,69 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="x-browser-info">
+  <template>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: sans-serif;
+      }
+
+      :host {
+        display: block;
+      }
+
+      dt {
+        font-weight: bold;
+      }
+
+      dt:not(:first-child) {
+        margin-top: 10px;
+      }
+    </style>
+
+    <h2>Browser info</h2>
+    <dl>
+      <dt>Web Components polyfills</dt>
+      <dd>[[polyfills]]</dd>
+
+      <dt>User Agent</dt>
+      <dd>[[useragent]]</dd>
+    </dl>
+  </template>
+
+  <script>
+    class BrowserInfo extends Polymer.Element {
+      static get is() {
+        return 'x-browser-info';
+      }
+
+      static get properties() {
+        return {
+          polyfills: String,
+          useragent: String
+        }
+      }
+
+      ready() {
+        super.ready();
+
+        let polyfills = '';
+        const scripts = document.querySelectorAll('script[src*="/webcomponentsjs/"]');
+        for (let i = 0; i < scripts.length; i += 1) {
+          const name = scripts[i].src.substr(scripts[i].src.lastIndexOf('/') + 1);
+          if (name !== 'webcomponents-loader.js') {
+            polyfills = polyfills === '' ? name : `${polyfills}, ${name}`;
+          }
+        }
+        this.polyfills = polyfills === '' ? '(none)' : polyfills;
+
+        this.useragent = navigator.userAgent;
+      }
+    }
+
+    window.customElements.define(BrowserInfo.is, BrowserInfo);
+  </script>
+</dom-module>

@@ -1,0 +1,35 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+
+<link rel="import" href="x-form-styles.html">
+
+<dom-module id="x-paper-form">
+  <template>
+    <style include="x-form-styles"></style>
+    <iron-form allow-redirect class="form">
+      <form action=".." method="GET">
+        <paper-input name="username" type="text" autocomplete="username" required
+            label="Username or email"></paper-input>
+        <paper-input name="password" type="password" autocomplete="current-password" required
+            label="Password"></paper-input>
+        <input type="submit">
+      </form>
+    </iron-form>
+  </template>
+
+  <script>
+    class PaperForm extends Polymer.Element {
+      static get is() {
+        return 'x-paper-form';
+      }
+      static get properties() {
+        return {
+          action: String
+        };
+      }
+    }
+
+    window.customElements.define(PaperForm.is, PaperForm);
+  </script>
+</dom-module>
