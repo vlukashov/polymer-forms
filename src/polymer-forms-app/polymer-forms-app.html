@@ -26,6 +26,7 @@
 
       @media (min-width: 960px) {
         .form {
+          flex: 1;
           min-width: 400px;
           max-width: 400px;
           padding: 0 35px;
@@ -51,7 +52,7 @@
 
     <section class="wrapper">
       <iron-form allow-redirect class="form">
-        <form id="wrapped-form" action="myform" method="GET">
+        <form id="wrapped-form" action="index" method="GET">
           <h2>iron-form with paper-inputs</h2>
           <paper-input name="username" type="text" autocomplete="username" required
               label="Username or email"></paper-input>
@@ -61,7 +62,7 @@
         </form>
       </iron-form>
 
-      <form id="native-form" action="myform" method="GET" class="form">
+      <form id="native-form" action="index" method="GET" class="form">
         <h2>native form with native inputs</h2>
         <label>
           Username or email
