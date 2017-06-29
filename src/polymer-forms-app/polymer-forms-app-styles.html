@@ -1,0 +1,58 @@
+<dom-module id="polymer-forms-app-styles">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .wrapper {
+        max-width: 960px;
+        margin: 0 auto;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: space-between;
+
+        padding: 0 20px;
+      }
+
+      .form {
+        padding: 20px 0;
+        width: 100%;
+      }
+
+      @media (min-width: 960px) {
+        .form {
+          flex: 1;
+          min-width: 400px;
+          max-width: 400px;
+        }
+      }
+
+      input {
+        display: block;
+      }
+
+      input:not([type=submit]) {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-top: 2px;
+        font-size: 14px;
+      }
+
+      label {
+        display: block;
+        margin-top: 25px;
+      }
+
+      dt {
+        font-weight: bold;
+      }
+
+      dt:not(:first-child) {
+        margin-top: 10px;
+      }
+    </style>
+  </template>
+</dom-module>

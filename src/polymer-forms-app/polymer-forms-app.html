@@ -2,53 +2,11 @@
 <link rel="import" href="../../bower_components/iron-form/iron-form.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 
+<link rel="import" href="polymer-forms-app-styles.html">
+
 <dom-module id="polymer-forms-app">
   <template>
-    <style>
-      :host {
-        display: block;
-      }
-
-      .wrapper {
-        max-width: 960px;
-        margin: 0 auto;
-
-        display: flex;
-        flex-wrap: wrap;
-        align-items: stretch;
-        justify-content: space-between;
-      }
-
-      .form {
-        padding: 20px 10px;
-        width: 100%;
-      }
-
-      @media (min-width: 960px) {
-        .form {
-          flex: 1;
-          min-width: 400px;
-          max-width: 400px;
-          padding: 0 35px;
-        }
-      }
-
-      input {
-        display: block;
-      }
-
-      input:not([type=submit]) {
-        width: 100%;
-        margin-bottom: 10px;
-        margin-top: 2px;
-        font-size: 14px;
-      }
-
-      label {
-        display: block;
-        margin-top: 25px;
-      }
-    </style>
+    <style include="polymer-forms-app-styles"></style>
 
     <section class="wrapper">
       <iron-form allow-redirect class="form">
@@ -76,6 +34,17 @@
         </label>
         <input type="submit">
       </form>
+
+      <footer>
+        <h2>Browser info</h2>
+        <dl>
+          <dt>Web Components polyfills</dt>
+          <dd>[[env.polyfills]]</dd>
+
+          <dt>User Agent</dt>
+          <dd>[[env.useragent]]</dd>
+        </dl>
+      </footer>
     </section>
   </template>
 
@@ -88,6 +57,23 @@
       static get is() { return 'polymer-forms-app'; }
       static get properties() {
         return {
+          env: {
+            type: Object,
+            value: () => {
+              let polyfills = '';
+              const scripts = document.querySelectorAll('script[src*="/webcomponentsjs/"]');
+              for (let i = 0; i < scripts.length; i += 1) {
+                const name = scripts[i].src.substr(scripts[i].src.lastIndexOf('/') + 1);
+                if (name !== 'webcomponents-loader.js') {
+                  polyfills = polyfills === '' ? name : `${polyfills}, ${name}`;
+                }
+              }
+              return {
+                polyfills: polyfills === '' ? '(none)' : polyfills,
+                useragent: navigator.userAgent,
+              };
+            }
+          }
         };
       }
     }
