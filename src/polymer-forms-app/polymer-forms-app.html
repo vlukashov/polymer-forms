@@ -9,8 +9,9 @@
     <style include="polymer-forms-app-styles"></style>
 
     <section class="wrapper">
+      <h1>Inside of Shadow DOM</h1>
       <form id="native-form" action="index" method="GET" class="form">
-        <h2>native form with native inputs</h2>
+        <h3>native form with native inputs</h2>
         <label>
           Username or email
           <input name="username" type="text" autocomplete="username" required
@@ -26,7 +27,7 @@
 
       <iron-form allow-redirect class="form">
         <form id="wrapped-form" action="index" method="GET">
-          <h2>iron-form with paper-inputs</h2>
+          <h3>iron-form with paper-inputs</h2>
           <paper-input name="username" type="text" autocomplete="username" required
               label="Username or email"></paper-input>
           <paper-input name="password" type="password" autocomplete="current-password" required

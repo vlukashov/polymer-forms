@@ -7,6 +7,57 @@
     <title>polymer-forms</title>
     <meta name="description" content="polymer-forms description">
 
+    <style>
+      h1 {
+        width: 100%;
+        font-family: sans-serif;
+        border-bottom: 3px solid lightgrey;
+        margin-bottom: 0
+      }
+
+      .wrapper {
+        max-width: 960px;
+        margin: 0 auto;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: space-between;
+
+        padding: 0 20px;
+      }
+
+      .form {
+        width: 100%;
+        padding: 20px;
+        border: 1px solid lightgrey;
+        margin-top: 20px;
+      }
+
+      @media (min-width: 960px) {
+        .form {
+          flex: 1;
+          min-width: 400px;
+          max-width: 400px;
+        }
+      }
+
+      input {
+        display: block;
+      }
+
+      input:not([type=submit]) {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-top: 2px;
+        font-size: 14px;
+      }
+
+      label {
+        display: block;
+      }
+    </style>
+
     <!-- See https://goo.gl/OOhYW5 -->
     <link rel="manifest" href="manifest.json">
 
@@ -15,6 +66,22 @@
     <link rel="import" href="src/polymer-forms-app/polymer-forms-app.html">
   </head>
   <body>
+    <section class="wrapper">
+      <h1>Outside of Shadow DOM</h1>
+      <form id="native-form" action="index" method="GET" class="form">
+        <label>
+          Username or email
+          <input name="username" type="text" autocomplete="username" required
+              placeholder="Username or email">
+        </label>
+        <label>
+          Password
+          <input name="password" type="password" autocomplete="current-password" required
+              placeholder="Password">
+        </label>
+        <input type="submit">
+      </form>
+    </section>
     <polymer-forms-app></polymer-forms-app>
   </body>
 </html>
