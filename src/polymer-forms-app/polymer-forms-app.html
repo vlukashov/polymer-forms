@@ -1,0 +1,96 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+
+<dom-module id="polymer-forms-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .wrapper {
+        max-width: 960px;
+        margin: 0 auto;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: space-between;
+      }
+
+      .form {
+        padding: 20px 10px;
+        width: 100%;
+      }
+
+      @media (min-width: 960px) {
+        .form {
+          min-width: 400px;
+          max-width: 400px;
+          padding: 0 35px;
+        }
+      }
+
+      input {
+        display: block;
+      }
+
+      input:not([type=submit]) {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-top: 2px;
+        font-size: 14px;
+      }
+
+      label {
+        display: block;
+        margin-top: 25px;
+      }
+    </style>
+
+    <section class="wrapper">
+      <iron-form allow-redirect class="form">
+        <form id="wrapped-form" action="myform" method="GET">
+          <h2>iron-form with paper-inputs</h2>
+          <paper-input name="username" type="text" autocomplete="username" required
+              label="Username or email"></paper-input>
+  				<paper-input name="password" type="password" autocomplete="current-password" required
+  						label="Password"></paper-input>
+          <input type="submit">
+        </form>
+      </iron-form>
+
+      <form id="native-form" action="myform" method="GET" class="form">
+        <h2>native form with native inputs</h2>
+        <label>
+          Username or email
+          <input name="username" type="text" autocomplete="username" required
+              placeholder="Username or email">
+        </label>
+        <label>
+          Password
+          <input name="password" type="password" autocomplete="current-password" required
+              placeholder="Password">
+        </label>
+        <input type="submit">
+      </form>
+    </section>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class PolymerFormsApp extends Polymer.Element {
+      static get is() { return 'polymer-forms-app'; }
+      static get properties() {
+        return {
+        };
+      }
+    }
+
+    window.customElements.define(PolymerFormsApp.is, PolymerFormsApp);
+  </script>
+</dom-module>
