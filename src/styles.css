@@ -41,6 +41,46 @@ body {
   padding-right: 20px;
 }
 
+.nav-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+}
+
+.nav-list > li {
+  display: block;
+  flex: 1 0 0;
+  border: 1px solid lightgrey;
+  background: aliceblue;
+  padding: 0 2px;
+}
+
+.nav-list > li:not(:first-child) {
+  margin-left: -1px;
+}
+
+.nav-list > li > a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+
+  text-align: center;
+  padding: 5px 8px;
+
+  line-height: 1.2em;
+  color: currentColor;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+
+.nav-list > li.active {
+  color: white;
+  background: darkblue;
+  border-color: darkblue;
+}
+
 h1 {
   width: 100%;
   border-bottom: 3px solid lightgrey;
