@@ -1,0 +1,105 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+
+<!-- list all index.html dependencies (as if it was a real app shell) -->
+<link rel="import" href="x-browser-info.html">
+<link rel="import" href="x-native-form.html">
+<link rel="import" href="x-paper-form.html">
+
+<dom-module id="polymer-forms-app">
+  <template>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :host {
+        display: block;
+      }
+
+      .selector {
+        display: flex;
+        align-items: stretch;
+      }
+
+      .selector > div {
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 0;
+        border: 1px solid lightgrey;
+        background: aliceblue;
+        padding: 0 2px;
+      }
+
+      .selector > div:not(:first-child) {
+        margin-left: -1px;
+      }
+
+      .selector > div > a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+
+        text-align: center;
+        padding: 5px 8px;
+
+        line-height: 1.2em;
+        color: currentColor;
+        text-decoration: none;
+        font-family: sans-serif;
+      }
+
+      .selector > div.iron-selected {
+        color: white;
+        background: darkblue;
+        border-color: darkblue;
+      }
+    </style>
+    <iron-selector class="selector" selected="{{selected}}" attr-for-selected="name" fallback-selection="native-in-light">
+      <div name="native-in-light"><a href="./#native-in-light">native elements, light DOM</a></div>
+      <div name="native-in-shadow"><a href="./#native-in-shadow">native elements, shadow DOM</a></div>
+      <div name="custom-in-shadow"><a href="./#custom-in-shadow">custom elements, shadow DOM</a></div>
+    </iron-selector>
+    <iron-pages selected="[[selected]]" attr-for-selected="slot" fallback-selection="native-in-light">
+      <slot name="native-in-light"></slot>
+      <slot name="native-in-shadow"></slot>
+      <slot name="custom-in-shadow"></slot>
+    </iron-pages>
+  </template>
+
+  <script>
+    class PolymerFormsApp extends Polymer.Element {
+      static get is() {
+        return 'polymer-forms-app';
+      }
+      static get properties() {
+        return {
+          selected: {
+            type: String,
+            value: () => {
+              if (window.location.hash.length > 0) {
+                return window.location.hash.substr(1);
+              }
+
+              return PolymerFormsApp.getParameterByName('form') || '';
+            }
+          }
+        };
+      }
+
+      static getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return window.decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+    }
+
+    window.customElements.define(PolymerFormsApp.is, PolymerFormsApp);
+  </script>
+</dom-module>

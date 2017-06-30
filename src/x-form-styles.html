@@ -1,9 +1,37 @@
 <dom-module id="x-form-styles">
-  <link rel="import" type="css" href="styles.css" as="style">
   <template>
     <style>
       :host {
         display: block;
+      }
+
+      /* global resets */
+      * {
+        box-sizing: border-box;
+      }
+
+      /* common styles for the main document and for custom form elements */
+      .form {
+        width: 100%;
+        padding: 20px;
+        border: 1px solid lightgrey;
+      }
+
+      @media (min-width: 720px) {
+        .form {
+          max-width: 480px;
+        }
+      }
+
+      .form > label,
+      .form > label > input {
+        display: block;
+        width: 100%;
+      }
+
+      .form > label > input {
+        margin-bottom: 10px;
+        margin-top: 2px;
       }
     </style>
   </template>

@@ -5,7 +5,7 @@
 <dom-module id="x-native-form">
   <template>
     <style include="x-form-styles"></style>
-    <form action=".." method="GET" class="form">
+    <form action="." method="GET" class="form">
       <label>
         Username or email
         <input name="username" type="text" autocomplete="username" required
@@ -16,6 +16,7 @@
         <input name="password" type="password" autocomplete="current-password" required
             placeholder="Password">
       </label>
+      <input type="hidden" name="form" value="native-in-shadow">
       <input type="submit">
     </form>
   </template>

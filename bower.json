@@ -4,7 +4,9 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
     "iron-form": "^2.0.0",
-    "paper-input": "^2.0.1"
+    "paper-input": "^2.0.1",
+    "iron-pages": "^2.0.0",
+    "iron-selector": "^2.0.0"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",

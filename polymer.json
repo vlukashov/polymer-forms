@@ -1,6 +1,12 @@
 {
   "entrypoint": "index.html",
-	"shell": "src/polymer-forms-app/polymer-forms-app.html",
+	"shell": "src/polymer-forms-app.html",
+  "sources": [
+    "src/styles.css"
+  ],
+  "extraDependencies": [
+    "bower_components/webcomponentsjs/*.js.map"
+  ],
   "lint": {
     "rules": [
       "polymer-2"

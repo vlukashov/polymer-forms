@@ -3,16 +3,12 @@
 <dom-module id="x-browser-info">
   <template>
     <style>
-      * {
-        box-sizing: border-box;
-      }
-
-      h1, h2, h3, h4, h5, h6 {
-        font-family: sans-serif;
-      }
-
       :host {
         display: block;
+      }
+
+      * {
+        box-sizing: border-box;
       }
 
       dt {
@@ -24,7 +20,6 @@
       }
     </style>
 
-    <h2>Browser info</h2>
     <dl>
       <dt>Web Components polyfills</dt>
       <dd>[[polyfills]]</dd>
@@ -42,25 +37,27 @@
 
       static get properties() {
         return {
-          polyfills: String,
-          useragent: String
-        }
-      }
-
-      ready() {
-        super.ready();
-
-        let polyfills = '';
-        const scripts = document.querySelectorAll('script[src*="/webcomponentsjs/"]');
-        for (let i = 0; i < scripts.length; i += 1) {
-          const name = scripts[i].src.substr(scripts[i].src.lastIndexOf('/') + 1);
-          if (name !== 'webcomponents-loader.js') {
-            polyfills = polyfills === '' ? name : `${polyfills}, ${name}`;
+          polyfills: {
+            type: String,
+            value: () => {
+              let polyfills = '';
+              const scripts = document.querySelectorAll('script[src*="/webcomponentsjs/"]');
+              for (let i = 0; i < scripts.length; i += 1) {
+                const name = scripts[i].src.substr(scripts[i].src.lastIndexOf('/') + 1);
+                if (name !== 'webcomponents-loader.js') {
+                  polyfills = polyfills === '' ? name : `${polyfills}, ${name}`;
+                }
+              }
+              return polyfills === '' ? '(none)' : polyfills;
+            }
+          },
+          useragent: {
+            type: String,
+            value: () => {
+              return navigator.userAgent;
+            }
           }
         }
-        this.polyfills = polyfills === '' ? '(none)' : polyfills;
-
-        this.useragent = navigator.userAgent;
       }
     }
 

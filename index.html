@@ -11,36 +11,46 @@
 
     <!-- See https://goo.gl/OOhYW5 -->
     <link rel="manifest" href="manifest.json">
+
+    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <link rel="import" href="src/polymer-forms-app.html">
   </head>
   <body>
-    <header>
-      <nav>
-        <ul class="nav-list">
-          <li class="active"><a href="#native-in-light">native elements, light DOM</a></li>
-          <li><a href="#native-in-shadow">native elements, shadow DOM</a></li>
-          <li><a href="#custom-in-shadow">custom elements, shadow DOM</a></li>
-        </ul>
-      </nav>
-    </header>
     <main>
-      <h1>HTML forms autocompletion</h1>
-
-      <p>HTML forms autocompletion is a <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill" target="_blank">standard</a> feature supported by all modern desktop and mobile browsers. It saves time when users return to web pages they have already visited earlier. It works especially well with login forms: the browser would automatically fill-in the username and password the user has used in the previous visit. That creates great UX and improves user engagement.</p>
-
-      <p>Bad news: this feature is broken in many ways for <a href="https://www.webcomponents.org/" target="_blank">Web Components</a> (when the native <a href="https://www.webcomponents.org/specs#the-shadow-dom-specification" target="_blank">Shadow DOM</a> is used).</p>
-
-      <nav>
-        <h2>Demos</h2>
-        <ul>
-          <li><a href="demos/native-in-light.html">native elements, light DOM</a></li>
-          <li><a href="demos/native-in-shadow.html">native elements, shadow DOM</a></li>
-          <li><a href="demos/custom-in-shadow.html">custom elements, shadow DOM</a></li>
-        </ul>
-        <p>Check the demos above to see how HTML forms autocompletion works with and without custom elements and Shadow DOM.</p>
-      </nav>
+      <polymer-forms-app>
+        <section slot="native-in-light">
+          <h2>Native Elements in the Light DOM</h2>
+          <form action="." method="GET" class="form">
+            <label>
+              Username or email
+              <input name="username" type="text" autocomplete="username" required
+                  placeholder="Username or email">
+            </label>
+            <label>
+              Password
+              <input name="password" type="password" autocomplete="current-password" required
+                  placeholder="Password">
+            </label>
+            <input type="hidden" name="form" value="native-in-light">
+            <input type="submit">
+          </form>
+        </section>
+        <section slot="native-in-shadow">
+          <h2>Native Elements in the Shadow DOM</h2>
+          <x-native-form></x-native-form>
+        </section>
+        <section slot="custom-in-shadow">
+          <h2>Custom Elements in the Shadow DOM</h2>
+          <x-paper-form></x-paper-form>
+        </section>
+      </polymer-forms-app>
     </main>
     <footer>
-      <p>Source code for this page and all demos is available on <a href="https://github.com/vlukashov/polymer-forms" target="_blank">GitHub</a>.</p>
+      <h2>Browser info</h2>
+      <x-browser-info></x-browser-info>
+      <hr/>
+      <p>Source code for this page is available on <a href="https://github.com/vlukashov/polymer-forms" target="_blank">GitHub</a>.</p>
     </footer>
   </body>
 </html>

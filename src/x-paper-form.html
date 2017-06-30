@@ -8,11 +8,12 @@
   <template>
     <style include="x-form-styles"></style>
     <iron-form allow-redirect class="form">
-      <form action=".." method="GET">
+      <form action="." method="GET">
         <paper-input name="username" type="text" autocomplete="username" required
             label="Username or email"></paper-input>
         <paper-input name="password" type="password" autocomplete="current-password" required
             label="Password"></paper-input>
+        <input type="hidden" name="form" value="custom-in-shadow">
         <input type="submit">
       </form>
     </iron-form>

@@ -1,34 +1,26 @@
-# \<polymer-forms\>
+# HTML5 forms autocompletion
 
-See this repo live at the [GitHub Pages](https://vlukashov.github.io/polymer-forms/)
+HTML forms autocompletion is a [standard](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) feature supported by all modern desktop and mobile browsers. It saves time when users return to web pages they have already visited earlier. It works especially well with login forms: the browser would automatically fill-in the username and password the user has used in the previous visit. That creates great UX and improves user engagement.
+
+Bad news: this feature is broken in many ways for [Web Components](https://www.webcomponents.org/) (when the native [Shadow DOM](https://www.webcomponents.org/specs#the-shadow-dom-specification) is used).
+
+Check the [live demo](https://vlukashov.github.io/polymer-forms/) to see how HTML forms autocompletion works (or does not) with and without the Shadow DOM.
 
 
-## Install the Polymer-CLI
+## Installing the demo locally
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
+First, make sure you have [Node](https://nodejs.org/en/) and [NPM](https://www.npmjs.com/) installed. Clone the repo and then run `npm install` to get all dependencies required to run and build the app.
 
-## Viewing Your Application
-
-```
-$ polymer serve
-```
-
-## Building Your Application
+## Viewing the demo locally
 
 ```
-$ polymer build
+$ npm start
 ```
 
-This will create builds of your application in the `build/` directory, optimized to be served in production. You can then serve the built versions by giving `polymer serve` a folder to serve from:
+## Building the demo for deployment
 
 ```
-$ polymer serve build/default
+$ npm run build
 ```
 
-## Running Tests
-
-```
-$ polymer test
-```
-
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+This will create builds of the demo application in the `build/` directory, optimized to be served in production. The `build/es5` is the version deployed to the GitHub pages.
