@@ -62,10 +62,10 @@
       <div name="native-in-shadow"><a href="./#native-in-shadow">native elements, shadow DOM</a></div>
       <div name="custom-in-shadow"><a href="./#custom-in-shadow">custom elements, shadow DOM</a></div>
     </iron-selector>
-    <iron-pages selected="[[selected]]" attr-for-selected="slot" fallback-selection="native-in-light">
-      <slot name="native-in-light"></slot>
-      <slot name="native-in-shadow"></slot>
-      <slot name="custom-in-shadow"></slot>
+    <iron-pages selected="[[selected]]" attr-for-selected="name" fallback-selection="native-in-light">
+      <div name="native-in-light"><slot name="native-in-light"></slot></div>
+      <div name="native-in-shadow"><slot name="native-in-shadow"></slot></div>
+      <div name="custom-in-shadow"><slot name="custom-in-shadow"></slot></div>
     </iron-pages>
   </template>
 
